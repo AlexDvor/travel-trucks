@@ -16,10 +16,14 @@ const IHeader: FC<IHeader> = () => {
 				<nav className={s.navThumb}>
 					<ul className={s.navList}>
 						<li>
-							<Link to={''}>Home</Link>
+							<Link className={s.link} to={''}>
+								Home
+							</Link>
 						</li>
 						<li>
-							<Link to={''}>Catalog</Link>
+							<Link className={s.link} to={''}>
+								Catalog
+							</Link>
 						</li>
 					</ul>
 				</nav>

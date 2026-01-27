@@ -1,8 +1,27 @@
 .backgroundThumb {
 	max-width: 1440px;
 	height: 696px;
+	background-image:
+		linear-gradient(to right, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0)),
+		url('../../assets/images/hero@1x.jpg');
 
-	background-image: url('../../assets/images/hero@1x.jpg');
 	background-size: cover;
 	background-position: center;
+	padding: 260px 0px 260px 64px;
+}
+
+.title {
+	font-weight: 600;
+	font-size: 48px;
+	line-height: 0.66667;
+	color: var(--color-gray-bg);
+	margin-bottom: 16px;
+}
+
+.subtitle {
+	margin-bottom: 40px;
+	font-weight: 600;
+	font-size: 24px;
+	line-height: 1.33333;
+	color: var(--color-gray-bg);
 }

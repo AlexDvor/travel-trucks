@@ -20,21 +20,12 @@
 	--color-white: #ffffff;
 }
 
-.body {
+body {
 	font-family: var(--font-main);
 	font-optical-sizing: auto;
 	font-weight: 500;
 	font-style: normal;
-}
-
-.container {
-	padding: 0px 64px;
-	margin: 0 auto;
-	max-width: 1440px;
-}
-
-.paddingNone {
-	padding: 0px;
+	color: var(--color-dark-navy);
 }
 
 ul {
@@ -57,4 +48,14 @@ a {
 h1,
 p {
 	margin: 0;
+}
+
+.container {
+	padding: 0px 64px;
+	margin: 0 auto;
+	max-width: 1440px;
+}
+
+.paddingNone {
+	padding: 0px;
 }
