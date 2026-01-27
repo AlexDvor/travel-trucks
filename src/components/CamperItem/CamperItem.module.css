@@ -1,5 +1,33 @@
 .card {
 	/* width: 888px; */
+	display: flex;
+	flex-direction: row;
 	height: 368px;
 	border: 1px solid tomato;
+	padding: 24px;
+	gap: 24px;
+}
+
+.imageLayout {
+	width: 292px;
+	height: 320px;
+	border-radius: 15px;
+	overflow: hidden;
+	flex-shrink: 0;
+}
+
+.info {
+	width: 100%;
+}
+
+.titleBox {
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: 8px;
+}
+
+.infoBox {
+	display: flex;
+	gap: 16px;
+	margin-bottom: 24px;
 }
