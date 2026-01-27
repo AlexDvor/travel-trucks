@@ -7,7 +7,7 @@ type IHeader = object;
 
 const IHeader: FC<IHeader> = () => {
 	return (
-		<div className='container'>
+		<header className='container'>
 			<div className={s.wrapper}>
 				<div>
 					<Logo />
@@ -24,7 +24,7 @@ const IHeader: FC<IHeader> = () => {
 					</ul>
 				</nav>
 			</div>
-		</div>
+		</header>
 	);
 };
 

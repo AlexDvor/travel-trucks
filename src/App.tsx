@@ -7,9 +7,7 @@ import './App.css';
 function App() {
 	return (
 		<>
-			<header>
-				<Header />
-			</header>
+			<Header />
 			<main>
 				<Hero />
 			</main>
