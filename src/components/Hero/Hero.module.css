@@ -1,0 +1,8 @@
+.backgroundThumb {
+	max-width: 1440px;
+	height: 696px;
+
+	background-image: url('../../assets/images/hero@1x.jpg');
+	background-size: cover;
+	background-position: center;
+}
