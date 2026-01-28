@@ -62,3 +62,8 @@ p {
 .paddingNone {
 	padding: 0px;
 }
+
+svg {
+	width: 10;
+	height: 10;
+}

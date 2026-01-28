@@ -1,0 +1,20 @@
+.list {
+	display: flex;
+	flex-direction: row;
+	gap: 8px;
+	font-weight: 500;
+	font-size: 16px;
+	line-height: 1.5;
+	text-align: center;
+	color: var(--color-dark-navy);
+}
+.item {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 48px;
+	min-width: 78px;
+	/* padding: 18px 12px; */
+	border-radius: 100px;
+	background: #f2f4f7;
+}
