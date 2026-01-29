@@ -1,0 +1,29 @@
+.btn {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	height: 96px;
+	border-radius: 12px;
+	border: 1px solid var(--color-gray-light);
+	background-color: var(--color-white);
+	font-size: 14px;
+	font-weight: 500;
+	color: var(--color-dark-navy);
+	cursor: pointer;
+	transition: all 0.2s ease;
+}
+
+.icon {
+	margin-bottom: 8px;
+}
+
+.btn:hover {
+	border-color: var(--color-yellow-accent);
+}
+
+.active {
+	border-color: var(--color-red-primary);
+	background-color: #fff5f5;
+	color: var(--color-red-primary);
+}

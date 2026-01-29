@@ -1,0 +1,28 @@
+.wrapper {
+	display: flex;
+	flex-direction: column;
+	gap: 48px;
+}
+
+.title {
+	position: relative;
+	font-size: 20px;
+	line-height: 1.2;
+	font-weight: 600;
+	color: var(--color-dark-navy);
+}
+
+.title::after {
+	content: '';
+	position: absolute;
+	bottom: -24px;
+	left: 0;
+	width: 100%;
+	border-bottom: 1px solid var(--color-gray-light);
+}
+
+.grid {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 12px;
+}

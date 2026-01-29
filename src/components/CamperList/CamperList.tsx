@@ -8,7 +8,7 @@ interface ICamperList {
 }
 
 const CamperList: FC<ICamperList> = ({ list }) => {
-	console.log('🚀 ~ list:', list);
+	// console.log('🚀 ~ list:', list);
 	return (
 		<ul className={s.list}>
 			{list.length > 0 &&
