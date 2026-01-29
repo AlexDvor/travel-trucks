@@ -12,8 +12,8 @@ const ApiCamper = {
 		const { data } = await axios.get<ICamperResponse>('/campers');
 		return data;
 	},
-	async getDataById(id) {
-		const data = await axios.get(`/campers/${id}`);
+	async getCarById(id: string) {
+		const { data } = await axios.get<ICamper>(`/campers/${id}`);
 		return data;
 	},
 };

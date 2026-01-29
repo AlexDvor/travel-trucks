@@ -1,18 +1,25 @@
 import type { FC } from 'react';
-import s from './ReviewLocation.module.css';
 import type { IReview } from '../../interfaces/camper';
 import Icon from '../Icon/Icon';
+import clsx from 'clsx';
+import s from './ReviewLocation.module.css';
 
 interface IReviewLocation {
 	rating: number;
 	reviews: IReview[];
 	location: string;
+	className?: string;
 }
 
-const ReviewLocation: FC<IReviewLocation> = ({ rating, reviews, location }) => {
+const ReviewLocation: FC<IReviewLocation> = ({
+	rating,
+	reviews,
+	location,
+	className,
+}) => {
 	return (
 		<>
-			<div className={s.wrapper}>
+			<div className={clsx(s.wrapper, className)}>
 				<div className={s.rating}>
 					<Icon
 						name='icon-star'
