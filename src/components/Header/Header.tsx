@@ -1,11 +1,15 @@
 import type { FC } from 'react';
-import { Link } from 'react-router';
+import { NavLink } from 'react-router';
 import Logo from '../../ui/Logo/Logo';
 import s from './Header.module.css';
+import clsx from 'clsx';
 
 type IHeader = object;
 
 const IHeader: FC<IHeader> = () => {
+	const getActiveClass = ({ isActive }: { isActive: boolean }) =>
+		clsx(s.link, isActive && s.activeLink);
+
 	return (
 		<header className='container'>
 			<div className={s.wrapper}>
@@ -16,14 +20,14 @@ const IHeader: FC<IHeader> = () => {
 				<nav className={s.navThumb}>
 					<ul className={s.navList}>
 						<li>
-							<Link className={s.link} to={''}>
+							<NavLink className={getActiveClass} to={'/'}>
 								Home
-							</Link>
+							</NavLink>
 						</li>
 						<li>
-							<Link className={s.link} to={''}>
+							<NavLink className={getActiveClass} to={'/catalog'}>
 								Catalog
-							</Link>
+							</NavLink>
 						</li>
 					</ul>
 				</nav>
