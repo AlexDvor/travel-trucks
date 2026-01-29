@@ -1,6 +1,7 @@
 .list {
 	display: flex;
 	flex-direction: row;
+	flex-wrap: wrap;
 	gap: 8px;
 	font-weight: 500;
 	font-size: 16px;
@@ -14,7 +15,11 @@
 	align-items: center;
 	height: 48px;
 	min-width: 78px;
-	/* padding: 18px 12px; */
+	padding: 0px 18px;
+	gap: 8px;
 	border-radius: 100px;
 	background: #f2f4f7;
+}
+
+.icon {
 }

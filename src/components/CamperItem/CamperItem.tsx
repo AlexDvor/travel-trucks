@@ -25,7 +25,9 @@ const CamperItem: FC<ICamperItem> = ({ item }) => {
 					<p>{item.location}</p>
 				</div>
 
-				<p>{`${item.description.slice(0, 70)}...`}</p>
+				<p
+					className={s.shortDescription}
+				>{`${item.description.slice(0, 70)}...`}</p>
 
 				<CarFeatures car={item} />
 			</div>
