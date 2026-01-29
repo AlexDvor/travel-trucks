@@ -5,6 +5,8 @@ import { Routes, Route } from 'react-router';
 import CataloPage from './pages/Catalog/CatalogPage';
 import DetailsPage from './pages/Details/DetailsPage';
 import HomePage from './pages/Home/HomePage';
+import Features from './components/Features/Features';
+import Reviews from './components/Reviews/Reviews';
 
 // const HomePage = lazy(() => import('./pages/HomePage/HomePage'));
 
@@ -16,7 +18,12 @@ function App() {
 				<Routes>
 					<Route path='/' element={<HomePage />} />
 					<Route path='/catalog' element={<CataloPage />} />
-					<Route path='/catalog/:carId' element={<DetailsPage />} />
+
+					<Route path='/catalog/:carId' element={<DetailsPage />}>
+						<Route path='features' element={<Features />} />
+						<Route path='review' element={<Reviews />} />
+					</Route>
+
 					{/* <Route path='*' element={<NotFoundPage />} /> */}
 				</Routes>
 			</main>
