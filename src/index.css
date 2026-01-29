@@ -42,7 +42,10 @@ img {
 }
 
 a {
+	color: inherit;
 	text-decoration: none;
+	background-color: transparent;
+	cursor: pointer;
 }
 
 h1,
