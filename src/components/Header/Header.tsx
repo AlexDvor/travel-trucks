@@ -11,26 +11,28 @@ const IHeader: FC<IHeader> = () => {
 		clsx(s.link, isActive && s.activeLink);
 
 	return (
-		<header className='container'>
-			<div className={s.wrapper}>
-				<div>
-					<Logo />
-				</div>
+		<header className={s.header}>
+			<div className='container'>
+				<div className={s.wrapper}>
+					<div>
+						<Logo />
+					</div>
 
-				<nav className={s.navThumb}>
-					<ul className={s.navList}>
-						<li>
-							<NavLink className={getActiveClass} to={'/'}>
-								Home
-							</NavLink>
-						</li>
-						<li>
-							<NavLink className={getActiveClass} to={'/catalog'}>
-								Catalog
-							</NavLink>
-						</li>
-					</ul>
-				</nav>
+					<nav className={s.navThumb}>
+						<ul className={s.navList}>
+							<li>
+								<NavLink className={getActiveClass} to={'/'}>
+									Home
+								</NavLink>
+							</li>
+							<li>
+								<NavLink className={getActiveClass} to={'/catalog'}>
+									Catalog
+								</NavLink>
+							</li>
+						</ul>
+					</nav>
+				</div>
 			</div>
 		</header>
 	);
