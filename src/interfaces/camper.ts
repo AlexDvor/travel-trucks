@@ -3,7 +3,7 @@ type IGalleryItem = {
 	thumb: string;
 };
 
-type IReview = {
+export type IReview = {
 	comment: string;
 	reviewer_name: string;
 	reviewer_rating: number;

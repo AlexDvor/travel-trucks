@@ -1,0 +1,22 @@
+.wrapper {
+	display: flex;
+	flex-wrap: wrap;
+	margin-bottom: 24px;
+	gap: 16px;
+}
+
+.rating {
+	display: flex;
+}
+
+.location {
+	display: flex;
+}
+
+.ratingIcon {
+	margin-right: 4px;
+}
+
+.locationIcon {
+	margin-right: 4px;
+}

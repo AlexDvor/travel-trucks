@@ -26,6 +26,16 @@
 	margin-bottom: 8px;
 }
 
+.priceBox {
+	display: flex;
+	align-items: center;
+	font-weight: 600;
+	font-size: 24px;
+	line-height: 1.33333;
+	gap: 12px;
+	color: currentColor;
+}
+
 .infoBox {
 	display: flex;
 	gap: 16px;
