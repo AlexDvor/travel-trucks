@@ -4,6 +4,7 @@ import s from './CamperItem.module.css';
 import CarFeatures from '../../ui/CarFeatures/CarFeatures';
 import ReviewLocation from '../../ui/ReviewLocation/ReviewLocation';
 import FavoriteBtn from '../../ui/FavoriteBtn/FavoriteBtn';
+import Button from '../../ui/Button/Button';
 
 interface ICamperItem {
 	item: ICamper;
@@ -35,6 +36,8 @@ const CamperItem: FC<ICamperItem> = ({ item }) => {
 				>{`${item.description.slice(0, 70)}...`}</p>
 
 				<CarFeatures car={item} />
+
+				<Button title='Show More' variant='primary' handleClick={() => {}} />
 			</div>
 		</li>
 	);
