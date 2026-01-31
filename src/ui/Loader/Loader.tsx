@@ -5,7 +5,7 @@ const Loader: FC = () => {
 	return (
 		<div className={s.wrapper}>
 			<div className={s.spinner} />
-			<p className={s.text}>Loading vehicles...</p>
+			<p className={s.text}>Loading page...</p>
 		</div>
 	);
 };
