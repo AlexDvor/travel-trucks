@@ -39,7 +39,12 @@ const CamperItem: FC<ICamperItem> = ({ item }) => {
 
 					<LabelFeatures car={item} length={4} />
 
-					<Button title='Show More' variant='primary' handleClick={() => {}} />
+					<Button
+						title='Show More'
+						variant='primary'
+						handleClick={() => {}}
+						className={s.bottomBtn}
+					/>
 				</div>
 			</Link>
 		</li>
