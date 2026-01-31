@@ -7,6 +7,7 @@ interface IButton {
 	handleClick?: () => void;
 	variant: 'primary' | 'secondary';
 	type?: React.ButtonHTMLAttributes<HTMLButtonElement>['type'];
+	className?: string;
 }
 
 const variantClasses = {
@@ -19,13 +20,14 @@ const Button: FC<IButton> = ({
 	handleClick = () => {},
 	type = 'button',
 	variant,
+	className,
 	...props
 }) => {
 	return (
 		<button
 			type={type}
 			onClick={handleClick}
-			className={clsx(s.btn, variantClasses[variant])}
+			className={clsx(s.btn, variantClasses[variant], className)}
 			{...props}
 		>
 			{title}

@@ -42,7 +42,12 @@ const BookingForm: FC = () => {
 					<FormInput name='email' label='Email*' type='email' />
 					<FormInput name='date' label='Booking date*' type='date' />
 					<FormTextarea name='comment' label='Comment' rows={4} />
-					<Button title='Send' variant='primary' type='submit' />
+					<Button
+						title='Send'
+						variant='primary'
+						type='submit'
+						className={s.btn}
+					/>
 				</Form>
 			</Formik>
 		</div>

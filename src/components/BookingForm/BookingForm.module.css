@@ -7,14 +7,17 @@
 }
 
 .title {
-	font-size: 24px;
-	font-weight: 700;
+	font-weight: 600;
+	font-size: 20px;
+	line-height: 1.2;
 	color: var(--color-dark-navy);
 	margin-bottom: 8px;
 }
 
 .subtitle {
-	font-size: 14px;
+	font-weight: 400;
+	font-size: 16px;
+	line-height: 1.5;
 	color: var(--color-gray-steel);
 	margin-bottom: 24px;
 }
@@ -22,5 +25,9 @@
 .form {
 	display: flex;
 	flex-direction: column;
-	gap: 16px;
+	gap: 14px;
+}
+
+.btn {
+	margin: 0px auto 0px auto;
 }
