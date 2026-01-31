@@ -3,7 +3,7 @@ import { Link } from 'react-router';
 import type { ICamper } from '../../interfaces/camper';
 import Button from '../../ui/Button/Button';
 import FavoriteBtn from '../../ui/FavoriteBtn/FavoriteBtn';
-import CarFeatures from '../../ui/LabelFeatures/LabelFeatures';
+import LabelFeatures from '../../ui/LabelFeatures/LabelFeatures';
 import ReviewLocation from '../../ui/ReviewLocation/ReviewLocation';
 import s from './CamperItem.module.css';
 
@@ -37,7 +37,7 @@ const CamperItem: FC<ICamperItem> = ({ item }) => {
 						className={s.shortDescription}
 					>{`${item.description.slice(0, 70)}...`}</p>
 
-					<CarFeatures car={item} />
+					<LabelFeatures car={item} length={4} />
 
 					<Button title='Show More' variant='primary' handleClick={() => {}} />
 				</div>

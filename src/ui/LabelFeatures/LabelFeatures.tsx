@@ -8,9 +8,10 @@ import s from './LabelFeatures.module.css';
 interface ILabelFeatures {
 	car: ICamper | null;
 	className?: string;
+	length?: number;
 }
 
-const LabelFeatures: FC<ILabelFeatures> = ({ car, className }) => {
+const LabelFeatures: FC<ILabelFeatures> = ({ car, className, length }) => {
 	if (!car) return null;
 	const { AC, TV, bathroom, kitchen, transmission, engine, radio } = car;
 
@@ -24,10 +25,12 @@ const LabelFeatures: FC<ILabelFeatures> = ({ car, className }) => {
 		{ label: 'Radio', icon: 'icon-radio-list', show: radio },
 	];
 
+	const listLabel = length ? features.slice(0, length) : features;
+
 	return (
 		<ul className={clsx(s.list, className)}>
-			{features.length > 0 &&
-				features
+			{listLabel.length > 0 &&
+				listLabel
 					.filter(item => item.show)
 					.map((item, idx) => (
 						<li className={s.item} key={idx}>
