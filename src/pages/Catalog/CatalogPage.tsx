@@ -7,7 +7,7 @@ import type { FiltersState } from '../../interfaces/filter';
 import ApiCamper from '../../api/apiCamper';
 import CamperList from '../../components/CamperList/CamperList';
 import FiltersPanel from '../../components/FiltersPanel/FiltersPanel';
-import CardSkeleton from '../../ui/CardSkeleton/CardSkeleton';
+import CamperSkeleton from '../../ui/CamperSkeleton/CamperSkeleton';
 
 import s from './CatalogPage.module.css';
 
@@ -54,7 +54,7 @@ const CataloPage: FC = () => {
 				</div>
 				<div className={s.catalogBox}>
 					{isLoading ? (
-						<CardSkeleton count={6} />
+						<CamperSkeleton count={6} />
 					) : (
 						<CamperList list={carList} />
 					)}
