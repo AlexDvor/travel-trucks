@@ -2,13 +2,13 @@ import { useEffect, useState } from 'react';
 
 import type { FC } from 'react';
 import type { ICamper } from '../../interfaces/camper';
+import type { FiltersState } from '../../interfaces/filter';
 
 import ApiCamper from '../../api/apiCamper';
 import CamperList from '../../components/CamperList/CamperList';
+import FiltersPanel from '../../components/FiltersPanel/FiltersPanel';
 
 import s from './CatalogPage.module.css';
-import FiltersPanel from '../../components/FiltersPanel/FiltersPanel';
-import type { FiltersState } from '../../interfaces/filter';
 
 const initialFilters: FiltersState = {
 	location: '',
@@ -17,7 +17,7 @@ const initialFilters: FiltersState = {
 };
 
 const CataloPage: FC = () => {
-	const [items, setItems] = useState<ICamper[]>([]);
+	const [carList, setCarList] = useState<ICamper[]>([]);
 	const [filters, setFilters] = useState<FiltersState>(initialFilters);
 
 	const handleSearch = () => {
@@ -28,7 +28,7 @@ const CataloPage: FC = () => {
 		const fetch = async () => {
 			try {
 				const data = await ApiCamper.getData();
-				setItems(data.items);
+				setCarList(data.items);
 			} catch (error) {
 				console.log('🚀 ~ error:', error);
 			}
@@ -48,7 +48,7 @@ const CataloPage: FC = () => {
 					/>
 				</div>
 				<div className={s.catalogBox}>
-					<CamperList list={items} />
+					<CamperList list={carList} />
 				</div>
 			</div>
 		</div>
