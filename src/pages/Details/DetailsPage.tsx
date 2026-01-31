@@ -3,16 +3,14 @@ import { NavLink, Outlet, useParams } from 'react-router';
 import type { ICamper } from '../../interfaces/camper';
 
 import ApiCamper from '../../api/apiCamper';
-import ReviewLocation from '../../ui/ReviewLocation/ReviewLocation';
 
+import ReviewLocation from '../../ui/ReviewLocation/ReviewLocation';
 import BookingForm from '../../components/BookingForm/BookingForm';
 
-import s from './DetailsPage.module.css';
 import clsx from 'clsx';
+import s from './DetailsPage.module.css';
 
-type IDetailsPage = object;
-
-const DetailsPage: FC<IDetailsPage> = () => {
+const DetailsPage: FC = () => {
 	const [car, setCar] = useState<ICamper | null>(null);
 
 	const { carId } = useParams();
@@ -26,7 +24,9 @@ const DetailsPage: FC<IDetailsPage> = () => {
 
 			try {
 				const car = await ApiCamper.getCarById(carId);
-				if (!car) return;
+				if (!car) {
+					setCar(null);
+				}
 				setCar(car);
 			} catch (error) {
 				console.log('🚀 ~ error:', error);
@@ -68,16 +68,15 @@ const DetailsPage: FC<IDetailsPage> = () => {
 			)}
 
 			<div className={s.navThumb}>
-				<NavLink className={isActive} to='features' state={car}>
+				<NavLink className={isActive} to='features'>
 					Features
 				</NavLink>
-				<NavLink className={isActive} to='review' state={car?.reviews}>
+				<NavLink className={isActive} to='review'>
 					Reviews
 				</NavLink>
 			</div>
 
 			<div className={s.detailsThumb}>
-				{/* <Outlet /> */}
 				{car && <Outlet context={{ car }} />}
 				<BookingForm />
 			</div>

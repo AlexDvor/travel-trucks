@@ -9,7 +9,7 @@ interface ReviewItemProps {
 }
 
 const ReviewItem: FC<ReviewItemProps> = ({ item }) => {
-	const getIconsArr = getStars(item.reviewer_rating);
+	const activeIconsByStar = getStars(item.reviewer_rating);
 
 	return (
 		<li>
@@ -18,7 +18,7 @@ const ReviewItem: FC<ReviewItemProps> = ({ item }) => {
 				<div className={s.userInfo}>
 					<h4 className={s.name}>{item.reviewer_name}</h4>
 					<ul className={s.listIcon}>
-						{getIconsArr.map((item, i) => (
+						{activeIconsByStar.map((item, i) => (
 							<li className={s.icon} key={i}>
 								<Icon
 									name='icon-star'

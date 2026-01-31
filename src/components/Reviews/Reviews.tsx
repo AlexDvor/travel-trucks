@@ -1,15 +1,11 @@
+import type { ICamper } from '../../interfaces/camper';
 import ReviewList from '../../ui/Review/ReviewList/ReviewList';
-import { useLocation } from 'react-router';
+import { useOutletContext } from 'react-router';
 
 const Reviews = () => {
-	const location = useLocation();
-	const reviewList = location.state;
+	const { car } = useOutletContext<{ car: ICamper }>();
 
-	return (
-		<>
-			<ReviewList reviews={reviewList} />
-		</>
-	);
+	return <>{<ReviewList reviews={car.reviews} />}</>;
 };
 
 export default Reviews;
