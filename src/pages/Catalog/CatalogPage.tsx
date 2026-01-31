@@ -7,6 +7,7 @@ import type { FiltersState } from '../../interfaces/filter';
 import ApiCamper from '../../api/apiCamper';
 import CamperList from '../../components/CamperList/CamperList';
 import FiltersPanel from '../../components/FiltersPanel/FiltersPanel';
+import CardSkeleton from '../../ui/CardSkeleton/CardSkeleton';
 
 import s from './CatalogPage.module.css';
 
@@ -18,6 +19,7 @@ const initialFilters: FiltersState = {
 
 const CataloPage: FC = () => {
 	const [carList, setCarList] = useState<ICamper[]>([]);
+	const [isLoading, setIsLoading] = useState(false);
 	const [filters, setFilters] = useState<FiltersState>(initialFilters);
 
 	const handleSearch = () => {
@@ -27,10 +29,13 @@ const CataloPage: FC = () => {
 	useEffect(() => {
 		const fetch = async () => {
 			try {
+				setIsLoading(true);
 				const data = await ApiCamper.getData();
 				setCarList(data.items);
 			} catch (error) {
 				console.log('🚀 ~ error:', error);
+			} finally {
+				setIsLoading(false);
 			}
 		};
 
@@ -48,7 +53,11 @@ const CataloPage: FC = () => {
 					/>
 				</div>
 				<div className={s.catalogBox}>
-					<CamperList list={carList} />
+					{isLoading ? (
+						<CardSkeleton count={6} />
+					) : (
+						<CamperList list={carList} />
+					)}
 				</div>
 			</div>
 		</div>
