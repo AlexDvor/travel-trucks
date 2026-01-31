@@ -1,0 +1,26 @@
+.card {
+	max-width: 640px;
+	padding: 32px;
+	border-radius: 16px;
+	border: 1px solid var(--color-gray-light);
+	background-color: var(--color-white);
+}
+
+.title {
+	font-size: 24px;
+	font-weight: 700;
+	color: var(--color-dark-navy);
+	margin-bottom: 8px;
+}
+
+.subtitle {
+	font-size: 14px;
+	color: var(--color-gray-steel);
+	margin-bottom: 24px;
+}
+
+.form {
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+}

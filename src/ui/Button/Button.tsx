@@ -4,7 +4,7 @@ import clsx from 'clsx';
 
 interface IButton {
 	title: string;
-	handleClick: () => void;
+	handleClick?: () => void;
 	variant: 'primary' | 'secondary';
 	type?: React.ButtonHTMLAttributes<HTMLButtonElement>['type'];
 }
@@ -14,12 +14,19 @@ const variantClasses = {
 	secondary: s.secondary,
 };
 
-const Button: FC<IButton> = ({ title, handleClick, type = 'button', variant }) => {
+const Button: FC<IButton> = ({
+	title,
+	handleClick = () => {},
+	type = 'button',
+	variant,
+	...props
+}) => {
 	return (
 		<button
 			type={type}
 			onClick={handleClick}
 			className={clsx(s.btn, variantClasses[variant])}
+			{...props}
 		>
 			{title}
 		</button>

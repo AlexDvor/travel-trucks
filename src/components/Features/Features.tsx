@@ -1,5 +1,11 @@
+import BookingForm from '../BookingForm/BookingForm';
+
 const Features = () => {
-	return <div>Features</div>;
+	return (
+		<div>
+			<BookingForm />
+		</div>
+	);
 };
 
 export default Features;
