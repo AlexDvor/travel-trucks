@@ -1,6 +1,6 @@
 import type { FC } from 'react';
+import LinkButton from '../../ui/LinkButton/LinkButton';
 import s from './Hero.module.css';
-import Button from '../../ui/Button/Button';
 
 const Hero: FC = () => {
 	return (
@@ -10,7 +10,7 @@ const Hero: FC = () => {
 				<p className={s.subtitle}>
 					You can find everything you want in our catalog{' '}
 				</p>
-				<Button title='View Now' variant='primary' handleClick={() => {}} />
+				<LinkButton title='View Now' path='/catalog' />
 			</div>
 		</section>
 	);

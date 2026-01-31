@@ -1,0 +1,14 @@
+.link {
+	line-height: 1.5;
+	letter-spacing: -0.01em;
+	border-radius: 200px;
+	padding: 16px 49px;
+	color: var(--color-white);
+	background-color: var(--color-red-primary);
+	transition: background-color 0.2s ease;
+}
+
+.link:hover,
+.link:focus {
+	background-color: var(--color-red-secondary);
+}
