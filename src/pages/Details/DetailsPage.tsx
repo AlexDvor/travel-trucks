@@ -15,8 +15,8 @@ const DetailsPage: FC = () => {
 
 	const { carId } = useParams();
 
-	const isActive = ({ isActive }: { isActive: boolean }) =>
-		clsx(s.link, isActive && s.active);
+	// const isActive = ({ isActive }: { isActive: boolean }) =>
+	// 	clsx(s.link, isActive && s.active);
 
 	useEffect(() => {
 		const fetchCarById = async () => {
@@ -35,6 +35,9 @@ const DetailsPage: FC = () => {
 
 		fetchCarById();
 	}, [carId]);
+
+	const isActive = ({ isActive }: { isActive: boolean }) =>
+		clsx(s.link, isActive && s.active);
 
 	return (
 		<div className='container'>

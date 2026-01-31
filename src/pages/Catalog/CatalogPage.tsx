@@ -17,7 +17,7 @@ const initialFilters: FiltersState = {
 	type: '',
 };
 
-const CataloPage: FC = () => {
+const CatalogPage: FC = () => {
 	const [carList, setCarList] = useState<ICamper[]>([]);
 	const [isLoading, setIsLoading] = useState(false);
 	const [filters, setFilters] = useState<FiltersState>(initialFilters);
@@ -64,4 +64,4 @@ const CataloPage: FC = () => {
 	);
 };
 
-export default CataloPage;
+export default CatalogPage;
