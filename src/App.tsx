@@ -1,32 +1,34 @@
 import './App.css';
-import Header from './components/Header/Header';
 import { Routes, Route, Navigate } from 'react-router';
+import { lazy, Suspense } from 'react';
 
-import CataloPage from './pages/Catalog/CatalogPage';
-import DetailsPage from './pages/Details/DetailsPage';
-import HomePage from './pages/Home/HomePage';
-import Features from './components/Features/Features';
-import Reviews from './components/Reviews/Reviews';
+import Header from './components/Header/Header';
+import Loader from './ui/Loader/Loader';
 
-// const HomePage = lazy(() => import('./pages/HomePage/HomePage'));
+const HomePage = lazy(() => import('./pages/Home/HomePage'));
+const CataloPage = lazy(() => import('./pages/Catalog/CatalogPage'));
+const DetailsPage = lazy(() => import('./pages/Details/DetailsPage'));
+const Features = lazy(() => import('./components/Features/Features'));
+const Reviews = lazy(() => import('./components/Reviews/Reviews'));
 
 function App() {
 	return (
 		<>
 			<Header />
 			<main>
-				<Routes>
-					<Route path='/' element={<HomePage />} />
-					<Route path='/catalog' element={<CataloPage />} />
+				<Suspense fallback={<Loader />}>
+					<Routes>
+						<Route path='/' element={<HomePage />} />
+						<Route path='/catalog' element={<CataloPage />} />
+						<Route path='/catalog/:carId' element={<DetailsPage />}>
+							<Route index element={<Navigate to='features' replace />} />
+							<Route path='features' element={<Features />} />
+							<Route path='review' element={<Reviews />} />
+						</Route>
 
-					<Route path='/catalog/:carId' element={<DetailsPage />}>
-						<Route index element={<Navigate to='features' replace />} />
-						<Route path='features' element={<Features />} />
-						<Route path='review' element={<Reviews />} />
-					</Route>
-
-					{/* <Route path='*' element={<NotFoundPage />} /> */}
-				</Routes>
+						{/* <Route path='*' element={<NotFoundPage />} /> */}
+					</Routes>
+				</Suspense>
 			</main>
 		</>
 	);
