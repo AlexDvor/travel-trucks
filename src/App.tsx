@@ -8,6 +8,7 @@ import Loader from './ui/Loader/Loader';
 const HomePage = lazy(() => import('./pages/Home/HomePage'));
 const CatalogPage = lazy(() => import('./pages/Catalog/CatalogPage'));
 const DetailsPage = lazy(() => import('./pages/Details/DetailsPage'));
+const NotFoundPage = lazy(() => import('./pages/NotFound/NotFoundPage'));
 const Features = lazy(() => import('./components/Features/Features'));
 const Reviews = lazy(() => import('./components/Reviews/Reviews'));
 
@@ -26,7 +27,7 @@ function App() {
 							<Route path='review' element={<Reviews />} />
 						</Route>
 
-						{/* <Route path='*' element={<NotFoundPage />} /> */}
+						<Route path='*' element={<NotFoundPage />} />
 					</Routes>
 				</Suspense>
 			</main>
