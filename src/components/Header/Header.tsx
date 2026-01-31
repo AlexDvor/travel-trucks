@@ -1,5 +1,5 @@
 import type { FC } from 'react';
-import { NavLink } from 'react-router';
+import { NavLink, Link } from 'react-router';
 import Logo from '../../ui/Logo/Logo';
 import s from './Header.module.css';
 import clsx from 'clsx';
@@ -14,9 +14,9 @@ const IHeader: FC<IHeader> = () => {
 		<header className={s.header}>
 			<div className='container'>
 				<div className={s.wrapper}>
-					<div>
+					<Link to={'/'}>
 						<Logo />
-					</div>
+					</Link>
 
 					<nav className={s.navThumb}>
 						<ul className={s.navList}>
