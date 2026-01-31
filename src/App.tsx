@@ -1,6 +1,6 @@
 import './App.css';
 import Header from './components/Header/Header';
-import { Routes, Route } from 'react-router';
+import { Routes, Route, Navigate } from 'react-router';
 
 import CataloPage from './pages/Catalog/CatalogPage';
 import DetailsPage from './pages/Details/DetailsPage';
@@ -20,6 +20,7 @@ function App() {
 					<Route path='/catalog' element={<CataloPage />} />
 
 					<Route path='/catalog/:carId' element={<DetailsPage />}>
+						<Route index element={<Navigate to='features' replace />} />
 						<Route path='features' element={<Features />} />
 						<Route path='review' element={<Reviews />} />
 					</Route>

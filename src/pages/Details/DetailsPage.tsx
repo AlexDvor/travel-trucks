@@ -5,6 +5,8 @@ import type { ICamper } from '../../interfaces/camper';
 import ApiCamper from '../../api/apiCamper';
 import ReviewLocation from '../../ui/ReviewLocation/ReviewLocation';
 
+import BookingForm from '../../components/BookingForm/BookingForm';
+
 import s from './DetailsPage.module.css';
 import clsx from 'clsx';
 
@@ -66,14 +68,19 @@ const DetailsPage: FC<IDetailsPage> = () => {
 			)}
 
 			<div className={s.navThumb}>
-				<NavLink className={isActive} to='features'>
+				<NavLink className={isActive} to='features' state={car}>
 					Features
 				</NavLink>
 				<NavLink className={isActive} to='review' state={car?.reviews}>
 					Reviews
 				</NavLink>
 			</div>
-			<Outlet />
+
+			<div className={s.detailsThumb}>
+				{/* <Outlet /> */}
+				{car && <Outlet context={{ car }} />}
+				<BookingForm />
+			</div>
 		</div>
 	);
 };

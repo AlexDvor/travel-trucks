@@ -74,3 +74,10 @@
 	border: 2px solid var(--color-red-primary);
 	z-index: 1;
 }
+
+.detailsThumb {
+	display: grid;
+	grid-template-columns: 631px 641px;
+	padding: 44px 0px 80px 0px;
+	gap: 40px;
+}

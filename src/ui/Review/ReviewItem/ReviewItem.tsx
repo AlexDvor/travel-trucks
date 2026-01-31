@@ -19,9 +19,8 @@ const ReviewItem: FC<ReviewItemProps> = ({ item }) => {
 					<h4 className={s.name}>{item.reviewer_name}</h4>
 					<ul className={s.listIcon}>
 						{getIconsArr.map((item, i) => (
-							<li className={s.icon}>
+							<li className={s.icon} key={i}>
 								<Icon
-									key={i}
 									name='icon-star'
 									style={
 										{

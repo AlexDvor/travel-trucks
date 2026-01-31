@@ -1,0 +1,47 @@
+.container {
+	display: flex;
+	flex-direction: column;
+	gap: 100px;
+	width: 100%;
+	padding: 44px 52px;
+	background-color: var(--color-gray-bg);
+	border-radius: 10px;
+}
+
+.margin {
+	margin: 0;
+}
+
+.infoThumb {
+	display: flex;
+	flex-direction: column;
+	gap: 48px;
+}
+
+.title {
+	position: relative;
+	font-weight: 600;
+	font-size: 20px;
+	line-height: 1.2;
+	color: currentColor;
+}
+
+.title::after {
+	content: '';
+	position: absolute;
+	bottom: -24px;
+	left: 0;
+	width: 100%;
+	border: 1px solid var(--color-gray-light);
+}
+
+.list {
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+}
+
+.item {
+	display: flex;
+	justify-content: space-between;
+}
