@@ -10,25 +10,21 @@ import BookingForm from '../../components/BookingForm/BookingForm';
 import clsx from 'clsx';
 import s from './DetailsPage.module.css';
 
+//Fix jsx component
+
 const DetailsPage: FC = () => {
 	const [car, setCar] = useState<ICamper | null>(null);
 
 	const { carId } = useParams();
 
-	// const isActive = ({ isActive }: { isActive: boolean }) =>
-	// 	clsx(s.link, isActive && s.active);
-
 	useEffect(() => {
 		const fetchCarById = async () => {
 			if (!carId) return;
-
 			try {
 				const car = await ApiCamper.getCarById(carId);
-				if (!car) {
-					setCar(null);
-				}
 				setCar(car);
 			} catch (error) {
+				setCar(null);
 				console.log('🚀 ~ error:', error);
 			}
 		};
