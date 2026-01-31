@@ -34,8 +34,6 @@ const DetailsPage: FC<IDetailsPage> = () => {
 		fetchCarById();
 	}, [carId]);
 
-	console.log('car', car);
-
 	return (
 		<div className='container'>
 			{car && (
@@ -71,7 +69,7 @@ const DetailsPage: FC<IDetailsPage> = () => {
 				<NavLink className={isActive} to='features'>
 					Features
 				</NavLink>
-				<NavLink className={isActive} to='review'>
+				<NavLink className={isActive} to='review' state={car?.reviews}>
 					Reviews
 				</NavLink>
 			</div>
