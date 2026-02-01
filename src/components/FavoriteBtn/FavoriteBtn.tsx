@@ -1,13 +1,14 @@
-import { useSelector } from 'react-redux';
 import type { FC } from 'react';
-import type { ICamper } from '../../interfaces/camper';
+import { useSelector } from 'react-redux';
 import { useAppDispatch } from '../../hooks/redux';
-import { toggleFavorite, selectFavoriteIds } from '../../store/favoriteSlice';
+import type { ICamper } from '../../interfaces/camper';
+import { selectFavoriteIds, toggleFavorite } from '../../store/favoriteSlice';
 
-import Icon from '../Icon/Icon';
+import Icon from '../../ui/Icon/Icon';
 
 import clsx from 'clsx';
 import s from './FavoriteBtn.module.css';
+
 interface FavoriteBtnProps {
 	item: ICamper;
 }
@@ -28,7 +29,7 @@ const FavoriteBtn: FC<FavoriteBtnProps> = ({ item }) => {
 			<Icon
 				name='icon-heart'
 				size={25}
-				className={clsx(isFavorite && s.isFavorite)}
+				className={clsx(s.icon, isFavorite && s.isFavorite)}
 			/>
 		</button>
 	);

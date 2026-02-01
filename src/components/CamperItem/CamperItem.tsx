@@ -1,10 +1,10 @@
 import type { FC } from 'react';
 import type { ICamper } from '../../interfaces/camper';
 
-import FavoriteBtn from '../../ui/FavoriteBtn/FavoriteBtn';
 import LabelFeatures from '../../ui/LabelFeatures/LabelFeatures';
-import ReviewLocation from '../../ui/ReviewLocation/ReviewLocation';
 import LinkButton from '../../ui/LinkButton/LinkButton';
+import ReviewLocation from '../../ui/ReviewLocation/ReviewLocation';
+import FavoriteBtn from '../FavoriteBtn/FavoriteBtn';
 
 import s from './CamperItem.module.css';
 
