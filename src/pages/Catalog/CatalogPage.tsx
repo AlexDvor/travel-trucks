@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 import type { FC } from 'react';
 import type { FiltersState } from '../../interfaces/filter';
@@ -10,35 +10,29 @@ import CamperSkeleton from '../../ui/CamperSkeleton/CamperSkeleton';
 import { useAppDispatch } from '../../hooks/redux';
 import { fetchCampers } from '../../store/campersOps';
 import { useSelector } from 'react-redux';
-import { selectCampers, selectLoading } from '../../store/campersSlice';
+import { selectFilteredCampers, selectLoading } from '../../store/campersSlice';
 
-import { selectStateFilter, setFilters, updateFilters } from '../../store/filterSlice';
+import { selectStateFilter, setFilters } from '../../store/filterSlice';
 
 import s from './CatalogPage.module.css';
 
 const CatalogPage: FC = () => {
 	const dispatch = useAppDispatch();
 
-	const carList = useSelector(selectCampers);
+	const campers = useSelector(selectFilteredCampers);
+
 	const isLoading = useSelector(selectLoading);
-	const filters = useSelector(selectStateFilter);
+
+	const appliedFilters = useSelector(selectStateFilter);
+
+	const [localFilters, setLocalFilters] = useState<FiltersState>(appliedFilters);
 
 	useEffect(() => {
 		dispatch(fetchCampers());
 	}, [dispatch]);
 
-	const setFiltersState: React.Dispatch<
-		React.SetStateAction<FiltersState>
-	> = updater => {
-		if (typeof updater === 'function') {
-			dispatch(updateFilters(updater(filters)));
-		} else {
-			dispatch(setFilters(updater));
-		}
-	};
-
 	const handleSearch = () => {
-		console.log('Search with filters:', filters);
+		dispatch(setFilters(localFilters));
 	};
 
 	return (
@@ -46,8 +40,8 @@ const CatalogPage: FC = () => {
 			<div className={s.wrapper}>
 				<div className={s.filtersBox}>
 					<FiltersPanel
-						filters={filters}
-						setFilters={setFiltersState}
+						filters={localFilters}
+						setFilters={setLocalFilters}
 						onSearch={handleSearch}
 					/>
 				</div>
@@ -55,7 +49,7 @@ const CatalogPage: FC = () => {
 					{isLoading ? (
 						<CamperSkeleton count={6} />
 					) : (
-						<CamperList list={carList} />
+						<CamperList list={campers} />
 					)}
 				</div>
 			</div>

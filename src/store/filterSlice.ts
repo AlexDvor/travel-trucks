@@ -5,7 +5,7 @@ import type { RootState } from './store';
 const initialState: FiltersState = {
 	location: '',
 	equipment: [],
-	type: '',
+	form: '',
 };
 
 export const filterSlice = createSlice({

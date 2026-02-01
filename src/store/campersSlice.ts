@@ -3,6 +3,8 @@ import type { ICamper } from '../interfaces/camper';
 import type { RootState } from './store';
 import { selectStateFilter } from './filterSlice';
 import { fetchCampers } from './campersOps';
+import { mapFilterFormToApi } from '../utils/filter/mapFilterFormToApi';
+import { getMatchEquipment } from '../utils/filter/getMatchEquipment';
 
 interface CampersState {
 	items: ICamper[];
@@ -48,10 +50,22 @@ export const selectError = (state: RootState) => state.campers.error;
 
 export const selectFilteredCampers = createSelector(
 	[selectCampers, selectStateFilter],
-	(campers, search) => {
-		return campers.filter(camper =>
-			camper.name.toLowerCase().includes(search.location.toLowerCase()),
-		);
+	(campers, filters) => {
+		return campers.filter(camper => {
+			const matchLocation = filters.location
+				? camper.location.toLowerCase().includes(filters.location.toLowerCase())
+				: true;
+
+			const apiForm = mapFilterFormToApi(filters.form);
+
+			const matchForm = apiForm ? camper.form.toLowerCase() === apiForm : true;
+
+			const matchEquipment = filters.equipment.length
+				? filters.equipment.every(eq => getMatchEquipment(eq, camper))
+				: true;
+
+			return matchLocation && matchForm && matchEquipment;
+		});
 	},
 );
 

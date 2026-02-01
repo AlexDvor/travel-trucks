@@ -1,12 +1,12 @@
 import FilterButton from '../FilterButton/FilterButton';
 
 import type { FC, Dispatch, SetStateAction } from 'react';
-import type { FiltersState, VehicleType } from '../../interfaces/filter';
+import type { FiltersState, VehicleForm } from '../../interfaces/filter';
 
 import s from './TypeFilter.module.css';
 
 type TCarBody = {
-	label: VehicleType;
+	label: VehicleForm;
 	icon: string;
 };
 
@@ -29,9 +29,9 @@ const TypeFilter: FC<ITypeFilterProps> = ({ filters, setFilters }) => {
 				{typeList.map((type, idx) => (
 					<FilterButton
 						key={idx}
-						active={filters.type === type.label}
+						active={filters.form === type.label}
 						onClick={() =>
-							setFilters(prev => ({ ...prev, type: type.label }))
+							setFilters(prev => ({ ...prev, form: type.label }))
 						}
 						iconName={type.icon}
 					>
