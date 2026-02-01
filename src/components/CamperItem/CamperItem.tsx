@@ -1,11 +1,10 @@
 import type { FC } from 'react';
-import { Link } from 'react-router';
 import type { ICamper } from '../../interfaces/camper';
 
-import Button from '../../ui/Button/Button';
 import FavoriteBtn from '../../ui/FavoriteBtn/FavoriteBtn';
 import LabelFeatures from '../../ui/LabelFeatures/LabelFeatures';
 import ReviewLocation from '../../ui/ReviewLocation/ReviewLocation';
+import LinkButton from '../../ui/LinkButton/LinkButton';
 
 import s from './CamperItem.module.css';
 
@@ -16,7 +15,7 @@ interface ICamperItem {
 const CamperItem: FC<ICamperItem> = ({ item }) => {
 	return (
 		<li>
-			<Link to={`/catalog/${item.id}`} className={s.card}>
+			<div className={s.card}>
 				<div className={s.imageLayout}>
 					<img src={item.gallery[0].thumb} />
 				</div>
@@ -25,7 +24,7 @@ const CamperItem: FC<ICamperItem> = ({ item }) => {
 						<h2>{item.name}</h2>
 						<div className={s.priceBox}>
 							<p>{`€${item.price}.00`}</p>
-							<FavoriteBtn />
+							<FavoriteBtn item={item} />
 						</div>
 					</div>
 
@@ -41,14 +40,13 @@ const CamperItem: FC<ICamperItem> = ({ item }) => {
 
 					<LabelFeatures car={item} length={4} />
 
-					<Button
+					<LinkButton
+						path={`/catalog/${item.id}`}
 						title='Show More'
-						variant='primary'
-						handleClick={() => {}}
 						className={s.bottomBtn}
 					/>
 				</div>
-			</Link>
+			</div>
 		</li>
 	);
 };
