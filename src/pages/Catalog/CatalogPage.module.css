@@ -12,3 +12,8 @@
 .catalogBox {
 	width: 100%;
 }
+
+.showMoreBtn {
+	margin: 40px auto 52px auto;
+	display: block;
+}

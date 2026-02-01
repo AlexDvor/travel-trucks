@@ -13,7 +13,6 @@
 	min-width: 166px;
 	max-width: 173px;
 	background-color: var(--color-red-primary);
-	color: var(--color-white);
 	border: none;
 	transition: background-color 0.2s ease;
 }
@@ -22,6 +21,7 @@
 	width: 145px;
 	border: 1px solid #dadde1;
 	background-color: transparent;
+	color: currentColor;
 }
 
 .primary:hover,

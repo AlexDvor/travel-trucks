@@ -14,6 +14,7 @@ import { selectFilteredCampers, selectLoading } from '../../store/campersSlice';
 import { resetFilters, selectStateFilter, setFilters } from '../../store/filterSlice';
 
 import s from './CatalogPage.module.css';
+import Button from '../../ui/Button/Button';
 
 const CatalogPage: FC = () => {
 	const dispatch = useAppDispatch();
@@ -25,15 +26,21 @@ const CatalogPage: FC = () => {
 	const appliedFilters = useSelector(selectStateFilter);
 
 	const [localFilters, setLocalFilters] = useState<FiltersState>(appliedFilters);
+	const [visibleCount, setVisibleCount] = useState(4);
+	const visibleCampers = campers.slice(0, visibleCount);
 
 	useEffect(() => {
 		dispatch(fetchCampers());
 
 		return () => {
 			dispatch(resetFilters());
+			setVisibleCount(4);
 		};
 	}, [dispatch]);
 
+	const handleLoadMore = () => {
+		setVisibleCount(prev => prev + 4);
+	};
 	const handleSearch = () => {
 		dispatch(setFilters(localFilters));
 	};
@@ -52,8 +59,15 @@ const CatalogPage: FC = () => {
 					{isLoading ? (
 						<CamperSkeleton count={6} />
 					) : (
-						<CamperList list={campers} />
+						<CamperList list={visibleCampers} />
 					)}
+					<Button
+						title='Load more'
+						variant='secondary'
+						type='button'
+						className={s.showMoreBtn}
+						handleClick={() => handleLoadMore()}
+					/>
 				</div>
 			</div>
 		</div>
