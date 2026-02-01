@@ -6,27 +6,40 @@ import ApiCamper from '../../api/apiCamper';
 
 import ReviewLocation from '../../ui/ReviewLocation/ReviewLocation';
 import BookingForm from '../../components/BookingForm/BookingForm';
+import ErrorMessage from '../../components/ErrorMessage/ErrorMessage';
+import DetailsSkeleton from '../../components/DetailsSkeleton/DetailsSkeleton';
 
 import clsx from 'clsx';
-
 import s from './DetailsPage.module.css';
-
-//Fix jsx component
+import axios from 'axios';
 
 const DetailsPage: FC = () => {
 	const [car, setCar] = useState<ICamper | null>(null);
+	const [isLoading, setIsLoading] = useState(true);
+	const [error, setError] = useState<string | null>(null);
 
 	const { carId } = useParams();
 
 	useEffect(() => {
 		const fetchCarById = async () => {
 			if (!carId) return;
+
 			try {
-				const car = await ApiCamper.getCarById(carId);
-				setCar(car);
-			} catch (error) {
+				setIsLoading(true);
+				setError(null);
+				const carData = await ApiCamper.getCarById(carId);
+				setCar(carData);
+			} catch (err: unknown) {
 				setCar(null);
-				console.log('🚀 ~ error:', error);
+				if (axios.isAxiosError(err)) {
+					setError(err.response?.data?.message || err.message);
+				} else if (err instanceof Error) {
+					setError(err.message);
+				} else {
+					setError('Unexpected error occurred');
+				}
+			} finally {
+				setIsLoading(false);
 			}
 		};
 
@@ -38,48 +51,50 @@ const DetailsPage: FC = () => {
 
 	return (
 		<div className='container'>
-			{car && (
-				<div className={s.section}>
-					<h2 className={s.title}>{car.name}</h2>
-					<ReviewLocation
-						location={car.location}
-						rating={car.rating}
-						reviews={car.reviews}
-						className={s.review}
-					/>
-					<p className={s.price}>{`€${car.price}.00`}</p>
+			{isLoading && <DetailsSkeleton />}
 
-					<ul className={s.grid}>
-						{car.gallery.length > 0 &&
-							car.gallery.map((item, idx) => (
+			{!isLoading && error && <ErrorMessage message={error} />}
+
+			{!isLoading && !error && car && (
+				<>
+					<div className={s.section}>
+						<h2 className={s.title}>{car.name}</h2>
+
+						<ReviewLocation
+							location={car.location}
+							rating={car.rating}
+							reviews={car.reviews}
+							className={s.review}
+						/>
+
+						<p className={s.price}>{`€${car.price}.00`}</p>
+
+						<ul className={s.grid}>
+							{car.gallery.map((item, idx) => (
 								<li className={s.imageThumb} key={idx}>
-									<img
-										src={item.thumb}
-										alt={car.name}
-										width={292}
-										height={312}
-									/>
+									<img src={item.thumb} alt={car.name} />
 								</li>
 							))}
-					</ul>
+						</ul>
 
-					<p className={s.description}>{car.description}</p>
-				</div>
+						<p className={s.description}>{car.description}</p>
+					</div>
+
+					<div className={s.navThumb}>
+						<NavLink className={isActive} to='features'>
+							Features
+						</NavLink>
+						<NavLink className={isActive} to='review'>
+							Reviews
+						</NavLink>
+					</div>
+
+					<div className={s.detailsThumb}>
+						<Outlet context={{ car }} />
+						<BookingForm />
+					</div>
+				</>
 			)}
-
-			<div className={s.navThumb}>
-				<NavLink className={isActive} to='features'>
-					Features
-				</NavLink>
-				<NavLink className={isActive} to='review'>
-					Reviews
-				</NavLink>
-			</div>
-
-			<div className={s.detailsThumb}>
-				{car && <Outlet context={{ car }} />}
-				<BookingForm />
-			</div>
 		</div>
 	);
 };
