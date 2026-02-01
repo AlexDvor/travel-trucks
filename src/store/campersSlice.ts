@@ -44,6 +44,7 @@ export const campersSlice = createSlice({
 	},
 });
 
+export const selectCampersState = (state: RootState) => state.campers;
 export const selectCampers = (state: RootState) => state.campers.items;
 export const selectLoading = (state: RootState) => state.campers.loading;
 export const selectError = (state: RootState) => state.campers.error;

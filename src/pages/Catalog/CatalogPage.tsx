@@ -6,27 +6,25 @@ import type { FiltersState } from '../../interfaces/filter';
 import CamperList from '../../components/CamperList/CamperList';
 import FiltersPanel from '../../components/FiltersPanel/FiltersPanel';
 import CamperSkeleton from '../../ui/CamperSkeleton/CamperSkeleton';
+import Button from '../../ui/Button/Button';
 
 import { useAppDispatch } from '../../hooks/redux';
 import { fetchCampers } from '../../store/campersOps';
 import { useSelector } from 'react-redux';
-import { selectFilteredCampers, selectLoading } from '../../store/campersSlice';
 import { resetFilters, selectStateFilter, setFilters } from '../../store/filterSlice';
 
+import { useCampersState } from '../../hooks/useCampersState';
 import s from './CatalogPage.module.css';
-import Button from '../../ui/Button/Button';
 
 const CatalogPage: FC = () => {
 	const dispatch = useAppDispatch();
 
-	const campers = useSelector(selectFilteredCampers);
-
-	const isLoading = useSelector(selectLoading);
-
+	const { campers, isLoading } = useCampersState();
 	const appliedFilters = useSelector(selectStateFilter);
 
 	const [localFilters, setLocalFilters] = useState<FiltersState>(appliedFilters);
 	const [visibleCount, setVisibleCount] = useState(4);
+
 	const visibleCampers = campers.slice(0, visibleCount);
 
 	useEffect(() => {
