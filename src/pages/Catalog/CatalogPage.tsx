@@ -14,18 +14,23 @@ import { useSelector } from 'react-redux';
 import { resetFilters, selectStateFilter, setFilters } from '../../store/filterSlice';
 
 import { useCampersState } from '../../hooks/useCampersState';
+
 import s from './CatalogPage.module.css';
 
 const CatalogPage: FC = () => {
 	const dispatch = useAppDispatch();
 
 	const { campers, isLoading } = useCampersState();
+
 	const appliedFilters = useSelector(selectStateFilter);
 
 	const [localFilters, setLocalFilters] = useState<FiltersState>(appliedFilters);
+
 	const [visibleCount, setVisibleCount] = useState(4);
 
 	const visibleCampers = campers.slice(0, visibleCount);
+
+	const canLoadMore = visibleCount < campers.length;
 
 	useEffect(() => {
 		dispatch(fetchCampers());
@@ -39,8 +44,10 @@ const CatalogPage: FC = () => {
 	const handleLoadMore = () => {
 		setVisibleCount(prev => prev + 4);
 	};
+
 	const handleSearch = () => {
 		dispatch(setFilters(localFilters));
+		setVisibleCount(4);
 	};
 
 	return (
@@ -59,13 +66,15 @@ const CatalogPage: FC = () => {
 					) : (
 						<CamperList list={visibleCampers} />
 					)}
-					<Button
-						title='Load more'
-						variant='secondary'
-						type='button'
-						className={s.showMoreBtn}
-						handleClick={() => handleLoadMore()}
-					/>
+					{canLoadMore && (
+						<Button
+							title='Load more'
+							variant='secondary'
+							type='button'
+							className={s.showMoreBtn}
+							handleClick={handleLoadMore}
+						/>
+					)}
 				</div>
 			</div>
 		</div>
