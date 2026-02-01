@@ -1,44 +1,30 @@
-import { useState, type FC } from 'react';
+import { useSelector } from 'react-redux';
+import type { FC } from 'react';
 import type { ICamper } from '../../interfaces/camper';
 import { useAppDispatch } from '../../hooks/redux';
-import {
-	addFavoriteItem,
-	deleteFavoriteItem,
-	selectFavoriteCampers,
-} from '../../store/favoriteSlice';
+import { toggleFavorite, selectFavoriteIds } from '../../store/favoriteSlice';
+
 import Icon from '../Icon/Icon';
 
-import s from './FavoriteBtn.module.css';
 import clsx from 'clsx';
-import { useSelector } from 'react-redux';
+import s from './FavoriteBtn.module.css';
 interface FavoriteBtnProps {
 	item: ICamper;
 }
 
 const FavoriteBtn: FC<FavoriteBtnProps> = ({ item }) => {
 	const dispatch = useAppDispatch();
-	const [isFavorite, setIsFavorite] = useState(false);
-	const favoriteList = useSelector(selectFavoriteCampers);
 
-	const handleClick = () => {
-		const hasSameItem = favoriteList.some(car => car.id === item.id);
+	const favoriteIds = useSelector(selectFavoriteIds);
 
-		try {
-			if (hasSameItem) {
-				setIsFavorite(false);
-				dispatch(deleteFavoriteItem(item.id));
-				return;
-			}
-			dispatch(addFavoriteItem(item));
-			setIsFavorite(true);
-		} catch (error) {
-			setIsFavorite(false);
-			console.log('🚀 ~ error:', error);
-		}
-	};
+	const isFavorite = favoriteIds.includes(item.id);
 
 	return (
-		<button className={s.btn} type='button' onClick={handleClick}>
+		<button
+			className={s.btn}
+			type='button'
+			onClick={() => dispatch(toggleFavorite(item))}
+		>
 			<Icon
 				name='icon-heart'
 				size={25}
