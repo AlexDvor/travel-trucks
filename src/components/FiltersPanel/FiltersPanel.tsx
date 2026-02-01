@@ -20,7 +20,7 @@ const FiltersPanel: FC<IFiltersPanelProps> = ({ filters, setFilters, onSearch })
 			<LocationFilter filters={filters} setFilters={setFilters} />
 			<EquipmentFilter filters={filters} setFilters={setFilters} />
 			<TypeFilter filters={filters} setFilters={setFilters} />
-			<Button handleClick={onSearch} title={'Search'} variant={'primary'} />
+			<Button handleClick={onSearch} title='Search' variant='primary' />
 		</aside>
 	);
 };

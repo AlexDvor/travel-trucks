@@ -1,7 +1,7 @@
 import { createSlice, createSelector } from '@reduxjs/toolkit';
 import type { ICamper } from '../interfaces/camper';
 import type { RootState } from './store';
-import { selectNameFilter } from './filterSlice';
+import { selectStateFilter } from './filterSlice';
 import { fetchCampers } from './campersOps';
 
 interface CampersState {
@@ -47,10 +47,10 @@ export const selectLoading = (state: RootState) => state.campers.loading;
 export const selectError = (state: RootState) => state.campers.error;
 
 export const selectFilteredCampers = createSelector(
-	[selectCampers, selectNameFilter],
+	[selectCampers, selectStateFilter],
 	(campers, search) => {
 		return campers.filter(camper =>
-			camper.name.toLowerCase().includes(search.toLowerCase()),
+			camper.name.toLowerCase().includes(search.location.toLowerCase()),
 		);
 	},
 );

@@ -1,22 +1,25 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
+import type { FiltersState } from '../interfaces/filter';
 import type { RootState } from './store';
 
-const initialState = {
-	name: '',
+const initialState: FiltersState = {
+	location: '',
+	equipment: [],
+	type: '',
 };
 
 export const filterSlice = createSlice({
-	name: 'filter',
+	name: 'filters',
 	initialState,
 	reducers: {
-		changeFilter: (state, action) => {
-			state.name = action.payload;
+		setFilters: (_, action: PayloadAction<FiltersState>) => action.payload,
+		updateFilters: (state, action: PayloadAction<Partial<FiltersState>>) => {
+			Object.assign(state, action.payload);
 		},
+		resetFilters: () => initialState,
 	},
 });
 
-export const selectNameFilter = (state: RootState) => state.filters.name;
-
-export const { changeFilter } = filterSlice.actions;
-
+export const { setFilters, updateFilters, resetFilters } = filterSlice.actions;
+export const selectStateFilter = (state: RootState) => state.filters;
 export default filterSlice.reducer;

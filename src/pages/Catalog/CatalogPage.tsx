@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 
 import type { FC } from 'react';
 import type { FiltersState } from '../../interfaces/filter';
@@ -12,27 +12,34 @@ import { fetchCampers } from '../../store/campersOps';
 import { useSelector } from 'react-redux';
 import { selectCampers, selectLoading } from '../../store/campersSlice';
 
+import { selectStateFilter, setFilters, updateFilters } from '../../store/filterSlice';
+
 import s from './CatalogPage.module.css';
 
-const initialFilters: FiltersState = {
-	location: '',
-	equipment: [],
-	type: '',
-};
-
 const CatalogPage: FC = () => {
+	const dispatch = useAppDispatch();
+
 	const carList = useSelector(selectCampers);
 	const isLoading = useSelector(selectLoading);
-	const dispatch = useAppDispatch();
-	const [filters, setFilters] = useState<FiltersState>(initialFilters);
-
-	const handleSearch = () => {
-		console.log(filters);
-	};
+	const filters = useSelector(selectStateFilter);
 
 	useEffect(() => {
 		dispatch(fetchCampers());
 	}, [dispatch]);
+
+	const setFiltersState: React.Dispatch<
+		React.SetStateAction<FiltersState>
+	> = updater => {
+		if (typeof updater === 'function') {
+			dispatch(updateFilters(updater(filters)));
+		} else {
+			dispatch(setFilters(updater));
+		}
+	};
+
+	const handleSearch = () => {
+		console.log('Search with filters:', filters);
+	};
 
 	return (
 		<div className='container'>
@@ -40,7 +47,7 @@ const CatalogPage: FC = () => {
 				<div className={s.filtersBox}>
 					<FiltersPanel
 						filters={filters}
-						setFilters={setFilters}
+						setFilters={setFiltersState}
 						onSearch={handleSearch}
 					/>
 				</div>
