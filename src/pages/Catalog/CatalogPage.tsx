@@ -11,7 +11,6 @@ import { useAppDispatch } from '../../hooks/redux';
 import { fetchCampers } from '../../store/campersOps';
 import { useSelector } from 'react-redux';
 import { selectFilteredCampers, selectLoading } from '../../store/campersSlice';
-
 import { resetFilters, selectStateFilter, setFilters } from '../../store/filterSlice';
 
 import s from './CatalogPage.module.css';

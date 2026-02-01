@@ -1,6 +1,8 @@
 import type { FC } from 'react';
-import s from './Button.module.css';
+
 import clsx from 'clsx';
+
+import s from './Button.module.css';
 
 interface IButton {
 	title: string;

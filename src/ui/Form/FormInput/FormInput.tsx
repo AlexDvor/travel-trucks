@@ -1,7 +1,10 @@
 import type { FC, InputHTMLAttributes } from 'react';
+
 import { useField } from 'formik';
-import s from './FormInput.module.css';
+
 import clsx from 'clsx';
+
+import s from './FormInput.module.css';
 
 interface IFormInput extends InputHTMLAttributes<HTMLInputElement> {
 	label: string;

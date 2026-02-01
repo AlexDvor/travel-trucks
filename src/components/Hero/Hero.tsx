@@ -1,5 +1,7 @@
 import type { FC } from 'react';
+
 import LinkButton from '../../ui/LinkButton/LinkButton';
+
 import s from './Hero.module.css';
 
 const Hero: FC = () => {

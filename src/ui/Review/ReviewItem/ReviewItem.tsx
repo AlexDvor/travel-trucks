@@ -1,7 +1,10 @@
 import type { FC } from 'react';
 import type { IReview } from '../../../interfaces/camper';
+
 import Icon from '../../Icon/Icon';
+
 import { getStars } from '../../../utils/getStars';
+
 import s from './ReviewItem.module.css';
 
 interface ReviewItemProps {

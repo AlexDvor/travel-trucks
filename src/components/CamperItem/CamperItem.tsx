@@ -1,10 +1,12 @@
 import type { FC } from 'react';
 import { Link } from 'react-router';
 import type { ICamper } from '../../interfaces/camper';
+
 import Button from '../../ui/Button/Button';
 import FavoriteBtn from '../../ui/FavoriteBtn/FavoriteBtn';
 import LabelFeatures from '../../ui/LabelFeatures/LabelFeatures';
 import ReviewLocation from '../../ui/ReviewLocation/ReviewLocation';
+
 import s from './CamperItem.module.css';
 
 interface ICamperItem {

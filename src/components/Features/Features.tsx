@@ -1,7 +1,10 @@
 import { useOutletContext } from 'react-router';
 import type { ICamper } from '../../interfaces/camper';
+
 import CarFeatures from '../../ui/LabelFeatures/LabelFeatures';
+
 import { capitalize } from '../../utils/string/capitalize';
+
 import s from './Features.module.css';
 
 const Features = () => {

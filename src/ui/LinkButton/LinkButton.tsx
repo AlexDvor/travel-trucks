@@ -1,5 +1,7 @@
 import type { FC } from 'react';
+
 import { Link } from 'react-router';
+
 import s from './LinkButton.module.css';
 
 interface LinkButtonProps {

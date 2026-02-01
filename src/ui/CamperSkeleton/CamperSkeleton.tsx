@@ -1,4 +1,5 @@
 import type { FC } from 'react';
+
 import s from './CamperSkeleton.module.css';
 
 interface ICamperSkeletonProps {

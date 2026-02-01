@@ -1,13 +1,14 @@
 import { useEffect, useState, type FC } from 'react';
 import { NavLink, Outlet, useParams } from 'react-router';
-import type { ICamper } from '../../interfaces/camper';
 
+import type { ICamper } from '../../interfaces/camper';
 import ApiCamper from '../../api/apiCamper';
 
 import ReviewLocation from '../../ui/ReviewLocation/ReviewLocation';
 import BookingForm from '../../components/BookingForm/BookingForm';
 
 import clsx from 'clsx';
+
 import s from './DetailsPage.module.css';
 
 //Fix jsx component

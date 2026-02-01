@@ -1,6 +1,9 @@
 import type { FC } from 'react';
+
 import type { ICamper } from '../../interfaces/camper';
+
 import CamperItem from '../CamperItem/CamperItem';
+
 import s from './CamperList.module.css';
 
 interface ICamperList {

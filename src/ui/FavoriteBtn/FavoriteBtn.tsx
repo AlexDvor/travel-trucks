@@ -1,8 +1,6 @@
 import type { FC } from 'react';
 import Icon from '../Icon/Icon';
 
-// interface IFavoriteBtn {}
-
 const FavoriteBtn: FC = () => {
 	return (
 		<>

@@ -1,8 +1,10 @@
 import type { FC } from 'react';
 import { NavLink, Link } from 'react-router';
+
 import Logo from '../../ui/Logo/Logo';
-import s from './Header.module.css';
 import clsx from 'clsx';
+
+import s from './Header.module.css';
 
 type IHeader = object;
 

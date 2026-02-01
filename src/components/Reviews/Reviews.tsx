@@ -1,6 +1,8 @@
-import type { ICamper } from '../../interfaces/camper';
-import ReviewList from '../../ui/Review/ReviewList/ReviewList';
 import { useOutletContext } from 'react-router';
+
+import type { ICamper } from '../../interfaces/camper';
+
+import ReviewList from '../../ui/Review/ReviewList/ReviewList';
 
 const Reviews = () => {
 	const { car } = useOutletContext<{ car: ICamper }>();

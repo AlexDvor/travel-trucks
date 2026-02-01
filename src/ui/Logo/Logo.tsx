@@ -1,4 +1,5 @@
 import type { FC } from 'react';
+
 import logo from '../../assets/icons/logo.svg';
 
 const Logo: FC = () => {

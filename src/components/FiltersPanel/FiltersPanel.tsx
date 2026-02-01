@@ -1,11 +1,11 @@
-import LocationFilter from '../../ui/LocationFilter/LocationFilter';
-import EquipmentFilter from '../../ui/EquipmentFilter/EquipmentFilter';
-import TypeFilter from '../../ui/TypeFilter/TypeFilter';
-
 import type { FC, Dispatch, SetStateAction } from 'react';
 import type { FiltersState } from '../../interfaces/filter';
 
 import Button from '../../ui/Button/Button';
+import LocationFilter from '../../ui/LocationFilter/LocationFilter';
+import EquipmentFilter from '../../ui/EquipmentFilter/EquipmentFilter';
+import TypeFilter from '../../ui/TypeFilter/TypeFilter';
+
 import s from './FiltersPanel.module.css';
 
 interface IFiltersPanelProps {

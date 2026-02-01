@@ -1,7 +1,10 @@
 import type { FC, TextareaHTMLAttributes } from 'react';
+
 import { useField } from 'formik';
-import s from './FormTextarea.module.css';
+
 import clsx from 'clsx';
+
+import s from './FormTextarea.module.css';
 
 interface IFormTextarea extends TextareaHTMLAttributes<HTMLTextAreaElement> {
 	label: string;

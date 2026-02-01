@@ -1,5 +1,6 @@
 import type { FC, Dispatch, SetStateAction, ChangeEvent } from 'react';
 import type { FiltersState } from '../../interfaces/filter';
+
 import Icon from '../Icon/Icon';
 
 import s from './LocationFilter.module.css';

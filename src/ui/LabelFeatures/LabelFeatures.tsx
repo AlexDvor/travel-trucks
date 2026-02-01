@@ -1,8 +1,11 @@
 import type { FC } from 'react';
 import type { ICamper } from '../../interfaces/camper';
 import { capitalize } from '../../utils/string/capitalize';
+
 import Icon from '../Icon/Icon';
+
 import clsx from 'clsx';
+
 import s from './LabelFeatures.module.css';
 
 interface ILabelFeatures {
