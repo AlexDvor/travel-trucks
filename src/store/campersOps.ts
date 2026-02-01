@@ -1,4 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
+import axios from 'axios';
 import ApiCamper, { type ICamperResponse } from '../api/apiCamper';
 
 export const fetchCampers = createAsyncThunk<
@@ -10,7 +11,15 @@ export const fetchCampers = createAsyncThunk<
 		const response = await ApiCamper.getData();
 		return response;
 	} catch (error) {
-		console.log(error);
-		return rejectWithValue(error.response?.data || 'Error fetching campers');
+		if (axios.isAxiosError(error)) {
+			return rejectWithValue(
+				error.response?.data?.message || 'Error fetching campers',
+			);
+		}
+		if (error instanceof Error) {
+			return rejectWithValue(error.message);
+		}
+
+		return rejectWithValue('Unknown error');
 	}
 });

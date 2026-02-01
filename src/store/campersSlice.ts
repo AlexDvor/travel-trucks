@@ -8,7 +8,6 @@ import { getMatchEquipment } from '../utils/filter/getMatchEquipment';
 
 interface CampersState {
 	items: ICamper[];
-	total: number | null;
 	loading: boolean;
 	error: string | null;
 }
@@ -17,7 +16,6 @@ const initialState: CampersState = {
 	items: [],
 	loading: false,
 	error: null,
-	total: null,
 };
 
 export const campersSlice = createSlice({
@@ -34,11 +32,10 @@ export const campersSlice = createSlice({
 			.addCase(fetchCampers.fulfilled, (state, { payload }) => {
 				state.loading = false;
 				state.items = payload.items;
-				state.total = payload.total;
 			})
 			.addCase(fetchCampers.rejected, (state, action) => {
 				state.loading = false;
-				state.total = null;
+
 				if (typeof action.payload === 'string') {
 					state.error = action.payload;
 				} else {
@@ -49,7 +46,6 @@ export const campersSlice = createSlice({
 });
 
 export const selectCampersState = (state: RootState) => state.campers;
-export const selectTotalCampers = (state: RootState) => state.campers.total;
 export const selectCampers = (state: RootState) => state.campers.items;
 export const selectLoading = (state: RootState) => state.campers.loading;
 export const selectError = (state: RootState) => state.campers.error;
