@@ -13,7 +13,8 @@ export const fetchCampers = createAsyncThunk<
 	} catch (error) {
 		if (axios.isAxiosError(error)) {
 			return rejectWithValue(
-				error.response?.data?.message || 'Error fetching campers',
+				error.response?.data?.message ||
+					'Something went wrong. Please try again later',
 			);
 		}
 		if (error instanceof Error) {

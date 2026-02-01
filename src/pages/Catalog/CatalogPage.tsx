@@ -4,6 +4,7 @@ import type { FC } from 'react';
 import type { FiltersState } from '../../interfaces/filter';
 
 import CamperList from '../../components/CamperList/CamperList';
+import ErrorMessage from '../../components/ErrorMessage/ErrorMessage';
 import FiltersPanel from '../../components/FiltersPanel/FiltersPanel';
 import CamperSkeleton from '../../ui/CamperSkeleton/CamperSkeleton';
 import Button from '../../ui/Button/Button';
@@ -20,7 +21,7 @@ import s from './CatalogPage.module.css';
 const CatalogPage: FC = () => {
 	const dispatch = useAppDispatch();
 
-	const { campers, isLoading } = useCampersState();
+	const { campers, isLoading, error } = useCampersState();
 
 	const appliedFilters = useSelector(selectStateFilter);
 
@@ -49,7 +50,7 @@ const CatalogPage: FC = () => {
 		dispatch(setFilters(localFilters));
 		setVisibleCount(4);
 	};
-
+	console.log(error);
 	return (
 		<div className='container'>
 			<div className={s.wrapper}>
@@ -60,20 +61,30 @@ const CatalogPage: FC = () => {
 						onSearch={handleSearch}
 					/>
 				</div>
+
 				<div className={s.catalogBox}>
-					{isLoading ? (
-						<CamperSkeleton count={6} />
-					) : (
-						<CamperList list={visibleCampers} />
+					{isLoading && campers.length === 0 && <CamperSkeleton count={6} />}
+
+					{!isLoading && error && <ErrorMessage />}
+
+					{!isLoading && !error && campers.length === 0 && (
+						<ErrorMessage message='No campers found for selected filters.' />
 					)}
-					{canLoadMore && (
-						<Button
-							title='Load more'
-							variant='secondary'
-							type='button'
-							className={s.showMoreBtn}
-							handleClick={handleLoadMore}
-						/>
+
+					{!isLoading && !error && campers.length > 0 && (
+						<>
+							<CamperList list={visibleCampers} />
+
+							{canLoadMore && (
+								<Button
+									title='Load more'
+									variant='secondary'
+									type='button'
+									className={s.showMoreBtn}
+									handleClick={handleLoadMore}
+								/>
+							)}
+						</>
 					)}
 				</div>
 			</div>
