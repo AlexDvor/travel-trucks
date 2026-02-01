@@ -12,7 +12,7 @@ import { fetchCampers } from '../../store/campersOps';
 import { useSelector } from 'react-redux';
 import { selectFilteredCampers, selectLoading } from '../../store/campersSlice';
 
-import { selectStateFilter, setFilters } from '../../store/filterSlice';
+import { resetFilters, selectStateFilter, setFilters } from '../../store/filterSlice';
 
 import s from './CatalogPage.module.css';
 
@@ -29,6 +29,10 @@ const CatalogPage: FC = () => {
 
 	useEffect(() => {
 		dispatch(fetchCampers());
+
+		return () => {
+			dispatch(resetFilters());
+		};
 	}, [dispatch]);
 
 	const handleSearch = () => {
