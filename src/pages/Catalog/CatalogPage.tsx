@@ -1,13 +1,16 @@
 import { useEffect, useState } from 'react';
 
 import type { FC } from 'react';
-import type { ICamper } from '../../interfaces/camper';
 import type { FiltersState } from '../../interfaces/filter';
 
-import ApiCamper from '../../api/apiCamper';
 import CamperList from '../../components/CamperList/CamperList';
 import FiltersPanel from '../../components/FiltersPanel/FiltersPanel';
 import CamperSkeleton from '../../ui/CamperSkeleton/CamperSkeleton';
+
+import { useAppDispatch } from '../../hooks/redux';
+import { fetchCampers } from '../../store/campersOps';
+import { useSelector } from 'react-redux';
+import { selectCampers, selectLoading } from '../../store/campersSlice';
 
 import s from './CatalogPage.module.css';
 
@@ -18,8 +21,9 @@ const initialFilters: FiltersState = {
 };
 
 const CatalogPage: FC = () => {
-	const [carList, setCarList] = useState<ICamper[]>([]);
-	const [isLoading, setIsLoading] = useState(false);
+	const carList = useSelector(selectCampers);
+	const isLoading = useSelector(selectLoading);
+	const dispatch = useAppDispatch();
 	const [filters, setFilters] = useState<FiltersState>(initialFilters);
 
 	const handleSearch = () => {
@@ -27,20 +31,8 @@ const CatalogPage: FC = () => {
 	};
 
 	useEffect(() => {
-		const fetch = async () => {
-			try {
-				setIsLoading(true);
-				const data = await ApiCamper.getData();
-				setCarList(data.items);
-			} catch (error) {
-				console.log('🚀 ~ error:', error);
-			} finally {
-				setIsLoading(false);
-			}
-		};
-
-		fetch();
-	}, []);
+		dispatch(fetchCampers());
+	}, [dispatch]);
 
 	return (
 		<div className='container'>
