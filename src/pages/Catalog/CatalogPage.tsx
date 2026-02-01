@@ -50,7 +50,7 @@ const CatalogPage: FC = () => {
 		dispatch(setFilters(localFilters));
 		setVisibleCount(4);
 	};
-	console.log(error);
+
 	return (
 		<div className='container'>
 			<div className={s.wrapper}>
