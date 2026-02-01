@@ -4,3 +4,7 @@
 
 	cursor: pointer;
 }
+
+.isFavorite {
+	fill: var(--color-red-primary);
+}
