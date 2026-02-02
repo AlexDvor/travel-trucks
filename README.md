@@ -1,9 +1,9 @@
 # 🚐 Travel Trucks
 
 <p align="center">
-  <a href="./README_UA.md">🇺🇦 Українська версія</a> |
-  <a href="./README_EN.md">🇬🇧 English version</a>
-  <a href="./README_ES.md">🇬🇧 Spanish version</a>
+  <a href="./README_UA.md"> Українська версія</a> |
+  <a href="./README_EN.md"> English version</a> |
+  <a href="./README_ES.md"> Spanish version</a>
 </p>
 
 ---
