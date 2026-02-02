@@ -1,75 +1,123 @@
-# React + TypeScript + Vite
+🚐 Travel Trucks
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Вебзастосунок для пошуку та перегляду кемперів (camper vans) з можливістю фільтрації, перегляду деталей, відгуків і додавання в обране.
 
-Currently, two official plugins are available:
+Проєкт побудований як SPA на React з маршрутизацією, глобальним станом і роботою з API.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+🔗 Демо API
 
-## React Compiler
+Дані отримуються з mock API:
+https://66b1f8e71ca8ad33d4f5f63e.mockapi.io/campers
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+🧰 Технології
 
-Note: This will impact Vite dev & build performances.
+React 19 — UI
 
-## Expanding the ESLint configuration
+Vite — збірка та dev-сервер
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+TypeScript — типізація
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+React Router — маршрутизація
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+Redux Toolkit — глобальний стан
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+Redux Persist — збереження обраного
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Axios — HTTP запити
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+Formik + Yup — форми та валідація
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+CSS Modules — ізольовані стилі
+
+clsx — умовні класи
+
+⚙️ Функціонал
+🏠 Головна сторінка
+
+Hero секція з промо-блоком
+
+Кнопка переходу до каталогу
+
+📋 Каталог кемперів
+
+Завантаження списку з API
+
+Фільтрація за:
+
+локацією
+
+типом кузова
+
+обладнанням
+
+Кнопка додавання в обране
+
+Skeleton loader під час завантаження
+
+Обробка помилок запиту
+
+🚐 Сторінка деталей кемпера
+
+Галерея та основна інформація
+
+Характеристики (Features)
+
+Відгуки (Reviews)
+
+Форма бронювання
+
+❤️ Обране
+
+Додається через Redux
+
+Зберігається між перезавантаженнями сторінки (Redux Persist)
+
+🧭 Маршрути
+Шлях Опис
+/ Головна сторінка
+/catalog Список кемперів
+/catalog/:carId Деталі кемпера
+/catalog/:carId/features Характеристики
+/catalog/:carId/review Відгуки
+
+- Сторінка 404
+
+src/
+│
+├── api/ # Робота з сервером (Axios)
+├── assets/ # Зображення та іконки
+├── components/ # Великі UI блоки
+├── pages/ # Сторінки для роутів
+├── ui/ # Дрібні перевикористовувані компоненти
+├── hooks/ # Кастомні хуки
+├── store/ # Redux slices та операції
+├── utils/ # Допоміжні функції
+└── interfaces/ # TypeScript
+
+🚀 Запуск проєкту локально
+1️⃣ Клонувати репозиторій
+git clone https://github.com/your-username/travel-trucks.git
+cd travel-trucks
+
+2️⃣ Встановити залежності
+npm install
+
+3️⃣ Запустити dev-сервер
+npm run dev
+
+Після запуску відкрий у браузері:
+
+http://localhost:5173
+
+🏗 Збірка для продакшену
+npm run build
+
+Збірка з’явиться в папці:
+
+dist/
+
+👀 Перегляд продакшен-збірки
+npm run preview
+
+🧪 Лінтинг
+npm run lint
