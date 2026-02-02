@@ -1,4 +1,4 @@
-import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
+import { createSelector, createSlice, type PayloadAction } from '@reduxjs/toolkit';
 import type { FavoriteState } from '../interfaces/favorite';
 import type { RootState } from './store';
 import type { ICamper } from '../interfaces/camper';
@@ -26,7 +26,7 @@ export const { toggleFavorite } = favoriteSlice.actions;
 
 export const selectFavoriteCampers = (state: RootState) => state.favorite.campers;
 
-export const selectFavoriteIds = (state: RootState) =>
-	state.favorite.campers.map(item => item.id);
-
+export const selectFavoriteIds = createSelector([selectFavoriteCampers], campers =>
+	campers.map(item => item.id),
+);
 export default favoriteSlice.reducer;
