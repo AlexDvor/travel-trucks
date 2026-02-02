@@ -55,7 +55,7 @@ export const selectFilteredCampers = createSelector(
 	(campers, filters) => {
 		return campers.filter(camper => {
 			const matchLocation = filters.location
-				? camper.location.toLowerCase().includes(filters.location.toLowerCase())
+				? camper.location?.toLowerCase().includes(filters.location.toLowerCase())
 				: true;
 
 			const apiForm = mapFilterFormToApi(filters.form);
@@ -63,7 +63,7 @@ export const selectFilteredCampers = createSelector(
 			const matchForm = apiForm ? camper.form.toLowerCase() === apiForm : true;
 
 			const matchEquipment = filters.equipment.length
-				? filters.equipment.every(eq => getMatchEquipment(eq, camper))
+				? filters.equipment?.every(eq => getMatchEquipment(eq, camper))
 				: true;
 
 			return matchLocation && matchForm && matchEquipment;
