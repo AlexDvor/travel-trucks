@@ -1,130 +1,136 @@
 # 🚐 Travel Trucks
 
-**Travel Trucks** --- це односторінковий вебзастосунок для пошуку та
-перегляду кемперів. Користувач може фільтрувати транспорт, переглядати
-деталі, читати відгуки та додавати кемпери в обране.
-
-Проєкт реалізований як SPA на React з маршрутизацією, глобальним станом
-та роботою з віддаленим API.
+<p align="center">
+  <a href="./README_UA.md">🇺🇦 Українська версія</a> |
+  <a href="./README_EN.md">🇬🇧 English version</a>
+  <a href="./README_ES.md">🇬🇧 Spanish version</a>
+</p>
 
 ---
 
-## 🌐 Джерело даних (Mock API)
+## 🌍 About the Project
+
+**Travel Trucks** is a single-page web application for browsing and exploring camper vans. Users can filter vehicles, view detailed information, read reviews, and add campers to their favorites list.
+
+The project is built as an SPA using React, with routing, global state management, and integration with a remote API.
+
+---
+
+## 🌐 Data Source (Mock API)
 
 https://66b1f8e71ca8ad33d4f5f63e.mockapi.io/campers
 
 ---
 
-## 🧰 Використані технології
+## 🧰 Tech Stack
 
-- React\
-- Vite\
-- TypeScript\
-- React Router\
-- Redux Toolkit\
-- Redux Persist\
-- Axios\
-- Formik + Yup\
-- CSS Modules\
+- React
+- Vite
+- TypeScript
+- React Router
+- Redux Toolkit
+- Redux Persist
+- Axios
+- Formik + Yup
+- CSS Modules
 - clsx
 
 ---
 
-## ⚙️ Функціональні можливості
+## ⚙️ Features
 
-### 🏠 Головна сторінка
+### 🏠 Home Page
 
-Промо-блок із переходом до каталогу.
+A promotional hero section with navigation to the camper catalog.
 
-### 📋 Каталог кемперів
+### 📋 Camper Catalog
 
-- Завантаження списку з сервера\
-- Фільтрація за локацією, типом кузова та характеристиками\
-- Додавання в обране\
-- Індикатор завантаження\
-- Обробка помилок запитів
+- Fetching camper data from the API
+- Filtering by location, vehicle type, and features
+- Add to favorites
+- Loading indicators
+- Error handling for failed requests
 
-### 🚐 Сторінка деталей кемпера
+### 🚐 Camper Details Page
 
-- Галерея зображень\
-- Детальний опис\
-- Характеристики (Features)\
-- Відгуки (Reviews)\
-- Форма бронювання
+- Image gallery
+- Full camper description
+- Technical features
+- User reviews
+- Booking form
 
-### ❤️ Обране
+### ❤️ Favorites
 
-Зберігається у глобальному стані та не зникає після перезавантаження
-сторінки.
-
----
-
-## 🧭 Маршрути застосунку
-
-Шлях Опис
+Saved in global state and persisted after page reload.
 
 ---
 
-`/` Головна сторінка
-`/catalog` Каталог кемперів
-`/catalog/:carId` Деталі кемпера
-`/catalog/:carId/features` Характеристики
-`/catalog/:carId/review` Відгуки
-`*` Сторінка 404
+## 🧭 Application Routes
+
+| Path                       | Description     |
+| -------------------------- | --------------- |
+| `/`                        | Home page       |
+| `/catalog`                 | Camper catalog  |
+| `/catalog/:carId`          | Camper details  |
+| `/catalog/:carId/features` | Camper features |
+| `/catalog/:carId/review`   | Camper reviews  |
+| `*`                        | 404 page        |
 
 ---
 
-## 🗂 Структура проєкту
+## 🗂 Project Structure
 
-    src/
-    ├── api/
-    ├── assets/
-    ├── components/
-    ├── pages/
-    ├── ui/
-    ├── hooks/
-    ├── store/
-    ├── utils/
-    └── interfaces/
+```
+src/
+├── api/
+├── assets/
+├── components/
+├── pages/
+├── ui/
+├── hooks/
+├── store/
+├── utils/
+└── interfaces/
+```
 
 ---
 
-## 🚀 Інструкція по запуску
+## 🚀 Getting Started
 
-### 1. Клонування
+### 1. Clone the repository
 
 ```bash
 git clone https://github.com/your-username/travel-trucks.git
 cd travel-trucks
 ```
 
-### 2. Встановлення залежностей
+### 2. Install dependencies
 
 ```bash
 npm install
 ```
 
-### 3. Запуск у режимі розробки
+### 3. Start development server
 
 ```bash
 npm run dev
 ```
 
-Відкрити в браузері: http://localhost:5173
+Open in your browser: http://localhost:5173
 
 ---
 
-## 🏗 Збірка для продакшену
+## 🏗 Production Build
 
 ```bash
 npm run build
 ```
 
-Файли з'являться у папці **dist/**
+Production files will be generated in the **dist/** folder.
 
 ---
 
-## 👀 Перевірка production-збірки
+## 👀 Preview Production Build
 
 ```bash
 npm run preview
@@ -132,7 +138,7 @@ npm run preview
 
 ---
 
-## 🧪 Лінтинг
+## 🧪 Linting
 
 ```bash
 npm run lint
@@ -140,14 +146,14 @@ npm run lint
 
 ---
 
-## ❗ Можливі проблеми
+## ❗ Troubleshooting
 
-**Проблеми з залежностями**
+**Dependency issues**
 
 ```bash
 rm -rf node_modules package-lock.json
 npm install
 ```
 
-**Зайнятий порт**\
-Vite автоматично запропонує інший порт у консолі.
+**Port already in use**  
+Vite will automatically suggest another available port in the console.
