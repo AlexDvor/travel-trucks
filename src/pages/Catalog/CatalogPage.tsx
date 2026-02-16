@@ -52,15 +52,15 @@ const CatalogPage: FC = () => {
 	};
 
 	return (
-		<div className='container'>
+		<section className='container'>
 			<div className={s.wrapper}>
-				<div className={s.filtersBox}>
+				<aside className={s.filtersBox}>
 					<FiltersPanel
 						filters={localFilters}
 						setFilters={setLocalFilters}
 						onSearch={handleSearch}
 					/>
-				</div>
+				</aside>
 
 				<div className={s.catalogBox}>
 					{isLoading && campers.length === 0 && <CamperSkeleton count={6} />}
@@ -88,7 +88,7 @@ const CatalogPage: FC = () => {
 					)}
 				</div>
 			</div>
-		</div>
+		</section>
 	);
 };
 
