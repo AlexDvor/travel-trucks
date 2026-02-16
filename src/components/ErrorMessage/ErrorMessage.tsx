@@ -3,6 +3,7 @@ import Icon from '../../ui/Icon/Icon';
 import Button from '../../ui/Button/Button';
 import s from './ErrorMessage.module.css';
 
+
 interface IErrorMessageProps {
 	message?: string;
 	onRetry?: () => void;

@@ -1,6 +1,6 @@
 .backgroundThumb {
 	max-width: 1440px;
-	height: 696px;
+	height: calc(100vh - 72px);
 	background-image:
 		linear-gradient(to right, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0)),
 		url('../../assets/images/hero@1x.jpg');
