@@ -1,12 +1,14 @@
 import type { FC } from 'react';
 
+import clsx from 'clsx';
+
 import LinkButton from '../../ui/LinkButton/LinkButton';
 
 import s from './Hero.module.css';
 
 const Hero: FC = () => {
 	return (
-		<section className='container paddingNone'>
+		<section className={clsx(`container ${s.resetContainer} `)}>
 			<div className={s.backgroundThumb}>
 				<h1 className={s.title}>Campers of your dreams</h1>
 				<p className={s.subtitle}>
